@@ -1,0 +1,22 @@
+WAQ to display highest salary with department id?
+=>select dipartment_id, max(salary) from employees group by employee_id;
+
+WAQ to display highest salary with department id, first name and employee id?
+=>select employee_id, first_name, department_id, salary
+	from employees e
+	where (department_id, salary) in (select department_id, max(salary) from employees group by department_id);
+
+WAQ to display second highest salary with department id?
+=>select department_id, max(salary)
+	from employees e
+	where e.salary < (select max(salary) from employees b where e.department_id = b.department_id) 
+	group by department_id;
+
+WAQ to display second highest salary with department id,first name, employee id?
+=> select employee_id, first_name, department_id, salary
+	from employees e	
+	where (department_id, salary) in (select department_id, max(salary)
+                                from employees e
+                                where e.salary < (select max(salary) from employees b where e.department_id = b.department_id)
+                                group by department_id);
+
