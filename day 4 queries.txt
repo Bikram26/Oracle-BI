@@ -1,0 +1,20 @@
+WAQ to display all the employees located in Oxford?
+=>select a.first_name,a.employee_id,b. state_province
+	from employees a join emp_details_view b
+	on a.employee_id = b.employee_id
+	where b.state_province like 'Oxford';
+
+
+WAQ to display number of employees joined monthwise?
+=> select count(*) as count, to_char(hire_date,'MON') as month
+	from employees
+	group by to_char(hire_date,'MON');
+
+WAQ to display highest salary person information?
+=> select * from employees 
+	where salary in (select max(salary) from employees );
+	
+	
+WAQ to display highest salary person department wise?
+=> select *	from employees 
+	where (department_id, salary) in (select department_id, max(salary) from employees group by department_id);
