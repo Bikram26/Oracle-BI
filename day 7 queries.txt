@@ -1,0 +1,37 @@
+
+
+1) Write a PLSQL block for performing calculations?
+
+=>  declare
+		a int := 3;
+		b int := 7;
+		add int := a+b;
+		sub int := a-b;
+		mul int := a*b;
+		div float := a/b;
+	begin
+		dbms_output.put_line(add);
+		dbms_output.put_line(sub);
+		dbms_output.put_line(mul);
+		dbms_output.put_line(div);
+	end;
+
+2)Write a PLSQL block for calculating students grade
+	marks 90-100 --> grade A
+	marks 80-90 --> grade B
+	marks 70-80 --> grade C
+	otherwise failure.
+	
+=>	declare
+		marks float := 90;
+	BEGIN
+		IF (marks BETWEEN 90 AND 100) THEN
+			dbms_output.put_line('A Grade');
+		ELSIF (marks BETWEEN 80 AND 90) THEN
+			dbms_output.put_line('B Grade');
+		ELSIF (marks BETWEEN 70 AND 80) THEN
+			dbms_output.put_line('C Grade');
+		ELSE 
+			dbms_output.put_line('Failed');
+		END IF;
+	end;
